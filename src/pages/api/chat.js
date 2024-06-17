@@ -1,5 +1,18 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import axios from 'axios';
+import OpenAI from "openai";
+
+let thread;
+let run;
+let assistant;
+let threadPosition = 0;
+let isWaiting = false;
+
+const secretKey = "";
+const openai = new OpenAI({
+  apiKey: secretKey,
+  dangerouslyAllowBrowser: true 
+});
 
 export default async function handler(req, res) {
   const referer = req.headers.referer || req.headers.referrer; // get the referer from the request headers
@@ -30,3 +43,4 @@ export default async function handler(req, res) {
   }
   
 }
+
